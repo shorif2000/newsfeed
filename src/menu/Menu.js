@@ -1,7 +1,7 @@
 import { Lightning } from '@lightningjs/sdk'
 import Item from './Item.js'
 
-export default class Menu extends Lightning.Component{
+export default class Menu extends Lightning.Component {
   static _template() {
     return {
       // we define a empty holder for our items of
@@ -56,5 +56,13 @@ export default class Menu extends Lightning.Component{
 
     // store new index
     this._index = idx
+  }
+
+  _handleUp() {
+    this._setIndex(Math.max(0, --this._index))
+  }
+
+  _handleDown() {
+    this._setIndex(Math.min(++this._index, this.items.length - 1))
   }
 }

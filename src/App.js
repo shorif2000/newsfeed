@@ -1,5 +1,6 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
 import Splash from './Splash.js'
+import Main from './Main.js'
 
 export default class App extends Lightning.Component {
   static getFonts() {
@@ -17,6 +18,7 @@ export default class App extends Lightning.Component {
         signals: { loaded: true },
         alpha: 0,
       },
+      Main: {},
     }
   }
 
@@ -52,7 +54,7 @@ export default class App extends Lightning.Component {
         // change focus path to main
         // component which handles the remotecontrol
         _getFocused() {
-          return this.tag('Main')
+          return this.tag(this.state)
         }
       },
     ]
