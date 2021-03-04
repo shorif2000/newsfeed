@@ -1,4 +1,5 @@
-import { Lightning , Utils } from '@lightningjs/sdk'
+import { Lightning, Utils } from '@lightningjs/sdk'
+import Splash from './Splash.js'
 
 export default class App extends Lightning.Component {
   static getFonts() {
@@ -7,56 +8,53 @@ export default class App extends Lightning.Component {
 
   static _template() {
     return {
-      rect: true, color: 0xff000000, w: 1920, h: 1080
+      rect: true,
+      color: 0xff000000,
+      w: 1920,
+      h: 1080,
+      Splash: {
+        type: Splash,
+        signals: { loaded: true },
+        alpha: 0,
+      },
     }
-    /*
-    return {
-      Background: {
-        w: 1920,
-        h: 1080,
-        color: 0xfffbb03b,
-        src: Utils.asset('images/background.png'),
-      },
-      Logo: {
-        mountX: 0.5,
-        mountY: 1,
-        x: 960,
-        y: 600,
-        src: Utils.asset('images/logo.png'),
-      },
-      Text: {
-        mount: 0.5,
-        x: 960,
-        y: 720,
-        text: {
-          text: "Let's start Building!",
-          fontFace: 'Regular',
-          fontSize: 64,
-          textColor: 0xbbffffff,
-        },
-      },
-    }*/
   }
 
-  static _states(){
+  _setup() {
+    this._setState('Splash')
+  }
+
+  static _states() {
     return [
-
+      class Splash extends this {
+        $enter() {
+          this.tag('Splash').setSmooth('alpha', 1)
+        }
+        $exit() {
+          this.tag('Splash').setSmooth('alpha', 0)
+        }
+        // because we have defined 'loaded'
+        loaded() {
+          this._setState('Main')
+        }
+      },
+      class Main extends this {
+        $enter() {
+          this.tag('Main').patch({
+            smooth: { alpha: 1, y: 0 },
+          })
+        }
+        $exit() {
+          this.tag('Main').patch({
+            smooth: { alpha: 0, y: 100 },
+          })
+        }
+        // change focus path to main
+        // component which handles the remotecontrol
+        _getFocused() {
+          return this.tag('Main')
+        }
+      },
     ]
-  }
-
-  _init() {
-    this.tag('Background')
-      .animation({
-        duration: 15,
-        repeat: -1,
-        actions: [
-          {
-            t: '',
-            p: 'color',
-            v: { 0: { v: 0xfffbb03b }, 0.5: { v: 0xfff46730 }, 0.8: { v: 0xfffbb03b } },
-          },
-        ],
-      })
-      .start()
   }
 }
