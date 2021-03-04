@@ -18,7 +18,11 @@ export default class App extends Lightning.Component {
         signals: { loaded: true },
         alpha: 0,
       },
-      Main: {},
+      Main: {
+        type: Main,
+        signals: { loaded: false },
+        alpha: 0,
+      },
     }
   }
 
@@ -40,6 +44,7 @@ export default class App extends Lightning.Component {
           this._setState('Main')
         }
       },
+
       class Main extends this {
         $enter() {
           this.tag('Main').patch({
