@@ -54,7 +54,7 @@ export default class App extends Lightning.Component {
         // change focus path to main
         // component which handles the remotecontrol
         _getFocused() {
-          return this.tag(this.state)
+          return this.tag('Main')
         }
       },
     ]
