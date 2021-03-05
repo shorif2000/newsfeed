@@ -15,8 +15,8 @@
 ### Getting started
 
 > Before you follow the steps below, make sure you have the
-[npm](https://www.npmjs.com/get-npm) installed globally
-[Lightning-CLI](https://rdkcentral.github.io/Lightning-CLI/#/) installed _globally_ only your system
+- [npm](https://www.npmjs.com/get-npm) installed globally
+- [Lightning-CLI](https://rdkcentral.github.io/Lightning-CLI/#/) installed _globally_ only your system
 
 ```
 npm install -g @lightningjs/cli
