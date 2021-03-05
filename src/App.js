@@ -1,5 +1,5 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
-import Splash from './Splash.js'
+import Splash from './components/splash/Splash.js'
 import Main from './Main.js'
 
 export default class App extends Lightning.Component {
@@ -21,7 +21,7 @@ export default class App extends Lightning.Component {
       Main: {
         type: Main,
         alpha: 0,
-        signals: { select: 'menuSelect' },
+        signals: { select: 'headlineSelect' },
       },
     }
   }
@@ -56,14 +56,12 @@ export default class App extends Lightning.Component {
             smooth: { alpha: 0, y: 100 },
           })
         }
-        menuSelect({ item }) {
-          console.log(item.value)
+        headlineSelect({ item }) {
           if (this._hasMethod(item.action)) {
             return this[item.action]()
           }
         }
         view() {
-          console.log(this)
           this._setState('Splash')
         }
         // change focus path to main

@@ -1,7 +1,7 @@
 import { Lightning } from '@lightningjs/sdk'
 import Item from './Item.js'
 
-export default class Menu extends Lightning.Component {
+export default class Headline extends Lightning.Component {
   static _template() {
     return {
       // we define a empty holder for our items of
@@ -24,10 +24,8 @@ export default class Menu extends Lightning.Component {
       actions: [{ p: 'x', v: { 0: 0, 0.5: -40, 1: 0 } }],
     })
 
-    // current focused menu index
+    // current focused headlines index
     this._index = 0
-    console.log(this.tag('Items').children[this._index].value)
-    this._id_val = this.tag('Items').children[this._index].value
   }
 
   _active() {
@@ -40,7 +38,7 @@ export default class Menu extends Lightning.Component {
 
   set items(v) {
     this.tag('Items').children = v.map((el, idx) => {
-      return { type: Item, action: el.action, label: el.label, value: el.value, y: idx * 90 }
+      return { type: Item, action: el.action, label: el.label, y: idx * 90 }
     })
   }
 
