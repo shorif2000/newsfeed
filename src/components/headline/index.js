@@ -38,7 +38,14 @@ export default class Headline extends Lightning.Component {
 
   set items(v) {
     this.tag('Items').children = v.map((el, idx) => {
-      return { type: Item, action: el.action, label: el.label, value: el.value, y: idx * 90 }
+      return {
+        type: Item,
+        action: el.action,
+        label: el.label,
+        value: el.value,
+        details: el.details,
+        y: idx * 90,
+      }
     })
   }
 

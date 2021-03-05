@@ -29,4 +29,12 @@ export default class Item extends Lightning.Component {
   get value() {
     return this._value
   }
+
+  set details(v) {
+    this._details = v
+  }
+
+  get details() {
+    return this._details
+  }
 }
