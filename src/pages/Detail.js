@@ -32,7 +32,7 @@ export default class Detail extends Lightning.Component {
 
   _handleBack() {
     // @TODO not rendering home
-    Router.navigate('home')
+    Router.back()
   }
 
   _onUrlParams(args) {
