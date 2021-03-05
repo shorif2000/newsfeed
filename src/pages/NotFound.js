@@ -25,21 +25,13 @@ export default class NotFound extends Lightning.Component {
           textAlign: 'center',
           lineHeight: 40,
           text:
-            'up navigate to Home page \nright navigate to Settings page \ndown navigate to Account page\n back to navigate to previous page',
+            'hit back to navigate to Home page'
         },
       },
     }
   }
 
-  _handleUp() {
+  _handleBack() {
     Router.navigate('home')
-  }
-
-  _handleRight() {
-    Router.navigate('settings')
-  }
-
-  _handleDown() {
-    Router.navigate('account')
   }
 }

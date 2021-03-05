@@ -1,4 +1,4 @@
-import { Lightning, Router } from '@lightningjs/sdk'
+import { Lightning, Router, Storage } from '@lightningjs/sdk'
 
 export default class Detail extends Lightning.Component {
   static _template() {
@@ -36,8 +36,12 @@ export default class Detail extends Lightning.Component {
   }
 
   _onUrlParams(args) {
-    //@TODO promise lookup send to error if not exist
-    this._headlineId = args.headlineId
+    const headlines = Storage.get('headlines').filter(el => el.value == args.headlineId)
+    if (headlines.length == 0) {
+      Router.navigate('*')
+    }
+    console.log('headlines', headlines)
+    //this._headlineId = args.headlineId
     this.tag('Label').text = `Detail page \nheadlineId: ${args.headlineId}`
   }
 
