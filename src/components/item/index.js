@@ -1,6 +1,6 @@
 import { Lightning } from '@lightningjs/sdk'
 
-export default class Item extends Lightning.Component {
+export default class Index extends Lightning.Component {
   static _template() {
     return {
       text: { text: '', fontFace: 'pixel', fontSize: 50 },

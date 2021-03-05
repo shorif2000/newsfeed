@@ -1,6 +1,7 @@
 import { Lightning, Utils } from '@lightningjs/sdk'
-import Splash from './components/splash/Splash.js'
+import Splash from './components/splash'
 import Main from './Main.js'
+import HeadlineDetailScreen from './screens/headlineDetailScreen'
 
 export default class App extends Lightning.Component {
   static getFonts() {
@@ -22,6 +23,10 @@ export default class App extends Lightning.Component {
         type: Main,
         alpha: 0,
         signals: { select: 'headlineSelect' },
+      },
+      HeadlineDetailScreen: {
+        type: HeadlineDetailScreen,
+        alpha: 0,
       },
     }
   }
@@ -62,12 +67,30 @@ export default class App extends Lightning.Component {
           }
         }
         view() {
-          this._setState('Splash')
+          this._setState('HeadlineDetailScreen')
         }
         // change focus path to main
         // component which handles the remotecontrol
         _getFocused() {
           return this.tag('Main')
+        }
+      },
+
+      class HeadlineDetailScreen extends this {
+        $enter() {
+          this.tag('HeadlineDetailScreen').patch({
+            smooth: { alpha: 1, y: 0 },
+          })
+        }
+
+        $exit() {
+          this.tag('HeadlineDetailScreen').patch({
+            smooth: { alpha: 0, y: 100 },
+          })
+        }
+
+        _getFocused() {
+          return this.tag('HeadlineDetailScreen')
         }
       },
     ]
