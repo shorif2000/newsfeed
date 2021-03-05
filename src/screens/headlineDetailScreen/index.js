@@ -9,7 +9,10 @@ export default class HeadlineDetailScreen extends Lightning.Component {
     }
   }
 
-  static _states() {
-    return []
+  set assetId(v) {
+    // v === 14728
+  }
+  set playlistId(v) {
+    // v === 38101
   }
 }

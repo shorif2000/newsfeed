@@ -1,15 +1,43 @@
-import { Lightning, Utils } from '@lightningjs/sdk'
+import { Router, Utils } from '@lightningjs/sdk'
+// import all the configured routes
+import routes from './lib/routes'
 import Splash from './components/splash'
 import Main from './Main.js'
 import HeadlineDetailScreen from './screens/headlineDetailScreen'
+import { Menu, Notification } from './widgets'
 
-export default class App extends Lightning.Component {
+export default class App extends Router.App {
   static getFonts() {
     return [{ family: 'Regular', url: Utils.asset('fonts/Roboto-Regular.ttf') }]
   }
 
+  /**
+   * Start the Router and provide with:
+   * - routes configuration
+   * - App instance (optional)
+   */
+  _setup() {
+    Router.startRouter(routes, this)
+  }
+
   static _template() {
     return {
+      ...super._template(),
+      Widgets: {
+        // this hosts all the widgets
+        Menu: {
+          type: Menu,
+        },
+        Notification: {
+          type: Notification,
+        },
+      },
+      Splash: {
+        type: Splash,
+        signals: { loaded: true },
+        alpha: 0,
+      },
+      /*
       rect: true,
       color: 0xff000000,
       w: 1920,
@@ -28,14 +56,33 @@ export default class App extends Lightning.Component {
         type: HeadlineDetailScreen,
         alpha: 0,
       },
+
+       */
     }
   }
 
-  _setup() {
+  /*_setup() {
     this._setState('Splash')
-  }
+  }*/
 
   static _states() {
+    const states = super._states()
+    states.push(
+      class ExampleState extends this {
+        $enter() {
+          this.tag('Splash').setSmooth('alpha', 1)
+        }
+        $exit() {
+          this.tag('Splash').setSmooth('alpha', 0)
+        }
+        // because we have defined 'loaded'
+        loaded() {
+          this._setState('Home')
+        }
+      }
+    )
+    return states
+    /*
     return [
       class Splash extends this {
         $enter() {
@@ -94,5 +141,11 @@ export default class App extends Lightning.Component {
         }
       },
     ]
+
+     */
+  }
+
+  _handleAppClose() {
+    console.log('Show exit dialogue')
   }
 }
