@@ -2,9 +2,20 @@
 
 ## com.metrological.app.myawesomeapp
 
+<!-- ABOUT THE PROJECT -->
+## About The Project
+Displays a view that shows a list of news headlines
+Pressing the arrow keys navigates through the list of headlines
+When a headline is selected, it navigates to a new page which shows the full article
+
+### Built With
+
+* LightningJs
+
 ### Getting started
 
 > Before you follow the steps below, make sure you have the
+[npm](https://www.npmjs.com/get-npm) installed globally
 [Lightning-CLI](https://rdkcentral.github.io/Lightning-CLI/#/) installed _globally_ only your system
 
 ```
@@ -20,13 +31,14 @@ npm install -g @lightningjs/cli
 3. Fire up a local webserver and open the App in a browser by running `lng serve` inside the root of your project
 
 
-#### Developing the App
+<!-- LICENSE -->
+## License
 
-During development you can use the **watcher** functionality of the _Lightning-CLI_.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-- use `lng watch` to automatically _rebuild_ your App whenever you make a change in the `src` or  `static` folder
-- use `lng dev` to start the watcher and run a local webserver / open the App in a browser _at the same time_
 
-#### Documentation
 
-Use `lng docs` to open up the Lightning-SDK documentation.
+<!-- CONTACT -->
+## Contact
+
+Sharif Uddin
