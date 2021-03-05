@@ -1,0 +1,6 @@
+[
+  { label: 'HEADLINE 7', action: 'view' },
+  { label: 'HEADLINE 3', action: 'view1' },
+  { label: 'HEADLINE 9', action: 'view2' },
+  { label: 'HEADLINE 50', action: 'view3' },
+]

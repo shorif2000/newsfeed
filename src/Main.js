@@ -1,5 +1,6 @@
 import { Lightning } from '@lightningjs/sdk'
 import Headline from './components/headlines/Headline.js'
+import * as headlineData from './data/headline.json'
 
 export default class Main extends Lightning.Component {
   static _template() {
@@ -8,12 +9,7 @@ export default class Main extends Lightning.Component {
         x: 600,
         y: 400,
         type: Headline,
-        items: [
-          { label: 'HEADLINE 7', action: 'view' },
-          { label: 'HEADLINE 3', action: 'view1' },
-          { label: 'HEADLINE 9', action: 'view2' },
-          { label: 'HEADLINE 50', action: 'view3' },
-        ],
+        items: headlineData,
       },
     }
   }
