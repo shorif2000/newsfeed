@@ -26,6 +26,8 @@ export default class Menu extends Lightning.Component {
 
     // current focused menu index
     this._index = 0
+    console.log(this.tag('Items').children[this._index].value)
+    this._id_val = this.tag('Items').children[this._index].value
   }
 
   _active() {
@@ -38,7 +40,7 @@ export default class Menu extends Lightning.Component {
 
   set items(v) {
     this.tag('Items').children = v.map((el, idx) => {
-      return { type: Item, action: el.action, label: el.label, y: idx * 90 }
+      return { type: Item, action: el.action, label: el.label, value: el.value, y: idx * 90 }
     })
   }
 
@@ -50,19 +52,19 @@ export default class Menu extends Lightning.Component {
     return this.items[this._index]
   }
 
-  _setIndex(idx) {
-    // since it's a one time transition we use smooth
-    this.tag('FocusIndicator').setSmooth('y', idx * 90 + 5)
-
-    // store new index
-    this._index = idx
-  }
-
   _handleUp() {
     this._setIndex(Math.max(0, --this._index))
   }
 
   _handleDown() {
     this._setIndex(Math.min(++this._index, this.items.length - 1))
+  }
+
+  _setIndex(idx) {
+    // since it's a one time transition we use smooth
+    this.tag('FocusIndicator').setSmooth('y', idx * 90 + 5)
+
+    // store new index
+    this._index = idx
   }
 }

@@ -20,8 +20,8 @@ export default class App extends Lightning.Component {
       },
       Main: {
         type: Main,
-        signals: { loaded: false },
         alpha: 0,
+        signals: { select: 'menuSelect' },
       },
     }
   }
@@ -55,6 +55,16 @@ export default class App extends Lightning.Component {
           this.tag('Main').patch({
             smooth: { alpha: 0, y: 100 },
           })
+        }
+        menuSelect({ item }) {
+          console.log(item.value)
+          if (this._hasMethod(item.action)) {
+            return this[item.action]()
+          }
+        }
+        view() {
+          console.log(this)
+          this._setState('Splash')
         }
         // change focus path to main
         // component which handles the remotecontrol

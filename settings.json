@@ -11,6 +11,8 @@
     "path": "./static",
     "log": true,
     "showVersion": true,
+    "imageServerUrl": "",
+    "proxyUrl": "",
     "textureMode": true
   }
 }
