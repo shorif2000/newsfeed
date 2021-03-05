@@ -4,9 +4,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Displays a view that shows a list of news headlines
-Pressing the arrow keys navigates through the list of headlines
-When a headline is selected, it navigates to a new page which shows the full article
+- Displays a view that shows a list of news headlines
+- Pressing the arrow keys navigates through the list of headlines
+- When a headline is selected, it navigates to a new page which shows the full article
 
 ### Built With
 
