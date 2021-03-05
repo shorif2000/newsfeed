@@ -1,7 +1,7 @@
 import { Lightning } from '@lightningjs/sdk'
 import Item from '../item'
 
-export default class Headlines extends Lightning.Component {
+export default class Headline extends Lightning.Component {
   static _template() {
     return {
       // we define a empty holder for our items of

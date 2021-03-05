@@ -79,13 +79,13 @@ export default class App extends Lightning.Component {
       class HeadlineDetailScreen extends this {
         $enter() {
           this.tag('HeadlineDetailScreen').patch({
-            smooth: { alpha: 1, y: 0 },
+            smooth: { alpha: 1 },
           })
         }
 
         $exit() {
           this.tag('HeadlineDetailScreen').patch({
-            smooth: { alpha: 0, y: 100 },
+            smooth: { alpha: 0 },
           })
         }
 
