@@ -1,7 +1,7 @@
 import { Router, Utils } from '@lightningjs/sdk'
 // import all the configured routes
 import routes from './lib/routes'
-import { Menu, Notification } from './widgets'
+import { Notification } from './widgets'
 
 export default class App extends Router.App {
   static getFonts() {
@@ -21,10 +21,6 @@ export default class App extends Router.App {
     return {
       ...super._template(),
       Widgets: {
-        // this hosts all the widgets
-        Menu: {
-          type: Menu,
-        },
         Notification: {
           type: Notification,
         },

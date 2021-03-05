@@ -1,8 +1,12 @@
-import { Lightning } from '@lightningjs/sdk'
+import { Lightning, Router } from '@lightningjs/sdk'
 
-export default class Index extends Lightning.Component {
+export default class Splash extends Lightning.Component {
   static _template() {
     return {
+      rect: true,
+      w: 1920,
+      h: 1080,
+      color: 0xff000000,
       Logo: {
         x: 960,
         y: 540,
@@ -23,7 +27,8 @@ export default class Index extends Lightning.Component {
     // add a finish eventlistener, so we can send a signal
     // to the parent when the animation is completed
     this._pulse.on('finish', () => {
-      this.signal('loaded')
+      //this.signal('loaded')
+      Router.navigate('home')
     })
 
     // start the animation

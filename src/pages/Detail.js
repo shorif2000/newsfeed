@@ -18,8 +18,7 @@ export default class Detail extends Lightning.Component {
           fontSize: 27,
           textAlign: 'center',
           lineHeight: 39,
-          text:
-            'Loading...',
+          text: 'Loading...',
         },
       },
     }

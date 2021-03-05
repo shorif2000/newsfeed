@@ -1,14 +1,8 @@
-import { Router } from '@lightningjs/sdk'
 import { getToken, doSearch } from './api'
 
 // we import all the pages that we want to add to our app
-import {
-  Home,
-  NotFound,
-  Error,
-  Detail,
-  Splash, //, Browse, Player, Search, Settings, Account,
-} from '../pages'
+import { Home, NotFound, Error, Detail } from '../pages'
+import { Splash } from '../components'
 
 export default {
   boot: params => {
@@ -23,7 +17,7 @@ export default {
     // boot request will always fire
     // on root and deeplink
   },
-  //bootComponent: Splash,
+  bootComponent: Splash,
   // First we define a root, this is the hash were the browser will point to
   // at the moment that you boot your app
   root: () => {
@@ -33,16 +27,6 @@ export default {
   },
   // Next we can define the rest of our routes
   routes: [
-    {
-      // this is a one level deep route.
-      path: 'splash',
-      // define the attached Component that the Router will show
-      // on this route. If configured the Router will create an instance
-      component: Splash,
-      /*before() {
-        return Promise.resolve()
-      },*/
-    },
     {
       // this is a one level deep route.
       path: 'home',
